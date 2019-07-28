@@ -9,5 +9,22 @@
             siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles
             Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
     </div>
-
+    <div class="container">
+        <h2>Les derniers biens</h2>
+        <div class="row flex">
+            {% for property in properties %}
+            <div class="col-3"></div>
+            <div class="card text-left">
+                <img class="card-img-top" src="holder.js/100px180/" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Title
+                        <a href="#">{{ property.title }}</a>
+                    </h4>
+                    <p class="card-text">{{ property.city }} ({{ property.postalCode }})</p>
+                    <div class="text-primary">{{ property.formattedPrice }} €</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

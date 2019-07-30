@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use PhpParser\Node\Expr\Array_;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**

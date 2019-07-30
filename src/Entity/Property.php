@@ -105,6 +105,9 @@ class Property
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getSlug() : string
     {
         return (new Slugify())->slugify($this->title);
@@ -197,6 +200,11 @@ class Property
         $this->heat = $heat;
 
         return $this;
+    }
+
+    public function getHeatType() : string
+    {
+        return self::HEAT[$this->heat];
     }
 
     public function getCity(): ?string

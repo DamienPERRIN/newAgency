@@ -4,10 +4,7 @@
 
     <div class="container">
         <h1>Editer les bien</h1>
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-        <button class="btn">Editer</button>
-        {{ form_end(form) }}
+        {{ include('admin/property/_form.html.twig', {form: form, button:'Editer'})}}
     </div>
 
 {% endblock %}

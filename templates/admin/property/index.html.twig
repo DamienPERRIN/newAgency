@@ -5,6 +5,13 @@
     <div class="container mt-4">
     <div class="container">
         <h2>Gérer les biens</h2>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -18,6 +25,11 @@
                         <td>{{ property.title }}</td>
                         <td>
                             <a href="{{ path('admin.property.edit', {id: property.id}) }}" class="btn btn-secondary">Editer</a>
+                            <form method="POST" action="{{ path('admin.property.delete', {id: property.id}) }}" style="display: inline-block" onsubmit="return confirm('Etes-vous vraiment sûr ?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_method" value="{{ csrf_token('delete' ~ property.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
                         </td>
                     </tr>
                 {% endfor %}

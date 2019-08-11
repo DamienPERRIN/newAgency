@@ -3,7 +3,7 @@
 {% block title "Agence de Décines-Charpieu" %}
 {% block body %}
     <div class="container">
-        <h1>Yo les gens</h1>
+        <h1>Bonjour tout le monde !!!</h1>
         <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis
             les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq
             siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles
@@ -13,15 +13,15 @@
         <h2>Les derniers biens</h2>
         <div class="row flex">
             {% for property in properties %}
-            <div class="col-3"></div>
+            <div class="col-2"></div>
             <div class="card text-left">
-                <img class="card-img-top" src="holder.js/100px180/" alt="">
+                <img class="card-img-top" src="#" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Title
                         <a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a>
                     </h4>
                     <p class="card-text">{{ property.city }} ({{ property.postalCode }})</p>
-                    <div class="text-primary">{{ property.formattedPrice }} €</div>
+                    <div class="text-info">{{ property.formattedPrice }} €</div>
                 </div>
             </div>
             {% endfor %}

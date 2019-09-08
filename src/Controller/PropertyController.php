@@ -10,7 +10,9 @@ use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
 use phpDocumentor\Reflection\Types\This;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,10 +36,11 @@ class PropertyController extends AbstractController
 
     /**
      * @Route(path="/biens", name="property.index")
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
-     * @throws Exception
      */
-    public function index() :Response
+    public function index(PaginatorInterface $paginator, Request $request) :Response
     {
 //        $property = new Property();
 //        $property->setTitle("Mon premier bien")
@@ -60,8 +63,15 @@ class PropertyController extends AbstractController
 //        $property[0]->setSold('true');
 //        $this->em->flush();
 //        dump($property);
+
+        $properties = $paginator->paginate(
+            $this->repository->findAllVisible(),
+            $request->query->getInt('page', 1),
+            12
+        );
         return $this->render("property/index.html.twig", [
-            'current_menu' => 'propreties'
+            'current_menu' => 'propreties',
+            'properties'   => $properties
         ]);
     }
 

@@ -5,11 +5,10 @@ namespace App\Controller;
 
 
 use App\Entity\Property;
+use App\Entity\PropertySearch;
+use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
-use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
-use Exception;
-use phpDocumentor\Reflection\Types\This;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,14 +63,19 @@ class PropertyController extends AbstractController
 //        $this->em->flush();
 //        dump($property);
 
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
         $properties = $paginator->paginate(
-            $this->repository->findAllVisible(),
+            $this->repository->findAllVisible($search),
             $request->query->getInt('page', 1),
             12
         );
         return $this->render("property/index.html.twig", [
             'current_menu' => 'propreties',
-            'properties'   => $properties
+            'properties'   => $properties,
+            'form'         => $form->createView()
         ]);
     }
 

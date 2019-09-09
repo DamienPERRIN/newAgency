@@ -10,10 +10,10 @@ class PropertySearch
     /**
      * @var int|null
      * @Assert\Range(
-     *     min=10,
-     *     max=400,
-     *     minMessage = "La surface doit être supérieur à {{ limit }}",
-     *     maxMessage = "La surface doit être inférieur à {{ limit }}"
+     *     min=100000,
+     *     max=1000000,
+     *     minMessage = "Le prix doit être supérieur à {{ limit }}",
+     *     maxMessage = "Le prix doit être inférieur à {{ limit }}"
      *     )
      */
     private $maxPrice;
@@ -21,10 +21,10 @@ class PropertySearch
     /**
      * @var int|null
      * @Assert\Range(
-     *     min=100000,
-     *     max=1000000,
-     *     minMessage = "Le prix doit être supérieur à {{ limit }}",
-     *     maxMessage = "Le prix doit être inférieur à {{ limit }}"
+     *     min=10,
+     *     max=400,
+     *     minMessage = "La surface doit être supérieur à {{ limit }}",
+     *     maxMessage = "La surface doit être inférieur à {{ limit }}"
      *     )
      */
     private $minSurface;

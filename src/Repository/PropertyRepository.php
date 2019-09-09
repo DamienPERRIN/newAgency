@@ -37,7 +37,7 @@ class PropertyRepository extends ServiceEntityRepository
         }
         if ($search->getMinSurface()){
             $query = $query
-                ->andWhere('p.surface <= :minsurface')
+                ->andWhere('p.surface >= :minsurface')
                 ->setParameter('minsurface', $search->getMinSurface());
         }
         return $query->getQuery();

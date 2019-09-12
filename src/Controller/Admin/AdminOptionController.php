@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Option;
 use App\Form\OptionType;
@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/option")
+ * @Route("/admin/option")
  */
-class OptionController extends AbstractController
+class AdminOptionController extends AbstractController
 {
     /**
      * @Route("/", name="option_index", methods={"GET"})
@@ -22,7 +22,7 @@ class OptionController extends AbstractController
      */
     public function index(OptionRepository $optionRepository): Response
     {
-        return $this->render('option/index.html.twig', [
+        return $this->render('admin/option/index.html.twig', [
             'options' => $optionRepository->findAll(),  //TODO Why my table option is with ``
         ]);
     }
@@ -43,10 +43,10 @@ class OptionController extends AbstractController
             $entityManager->persist($option);
             $entityManager->flush();
 
-            return $this->redirectToRoute('option_index');
+            return $this->redirectToRoute('admin.option.index');
         }
 
-        return $this->render('option/new.html.twig', [
+        return $this->render('admin/option/new.html.twig', [
             'option' => $option,
             'form' => $form->createView(),
         ]);
@@ -57,12 +57,12 @@ class OptionController extends AbstractController
      * @param Option $option
      * @return Response
      */
-    public function show(Option $option): Response
-    {
-        return $this->render('option/show.html.twig', [
-            'option' => $option,
-        ]);
-    }
+//    public function show(Option $option): Response
+//    {
+//        return $this->render('admin/option/show.html.twig', [
+//            'option' => $option,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="option_edit", methods={"GET","POST"})
@@ -78,10 +78,10 @@ class OptionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('option_index');
+            return $this->redirectToRoute('admin.option.index');
         }
 
-        return $this->render('option/edit.html.twig', [
+        return $this->render('admin/option/edit.html.twig', [
             'option' => $option,
             'form' => $form->createView(),
         ]);
@@ -101,6 +101,6 @@ class OptionController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('option_index');
+        return $this->redirectToRoute('admin.option.index');
     }
 }

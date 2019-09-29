@@ -918,10 +918,10 @@
     <table id="230" parent="3" name="option">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="231" parent="3" name="option_property">
+    <table id="231" parent="3" name="property">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="232" parent="3" name="property">
+    <table id="232" parent="3" name="property_option">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
     <table id="233" parent="3" name="user">
@@ -963,136 +963,135 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="240" parent="231" name="option_id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="241" parent="231" name="property_id">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="242" parent="231" name="IDX_AB856D7AA7C41D6F">
-      <ColNames>option_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="243" parent="231" name="IDX_AB856D7A549213EC">
-      <ColNames>property_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="244" parent="231" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>option_id
-property_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="245" parent="231" name="FK_AB856D7AA7C41D6F">
-      <ColNames>option_id</ColNames>
-      <RefSchemaName>myagency</RefSchemaName>
-      <RefTableName>option</RefTableName>
-      <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <foreign-key id="246" parent="231" name="FK_AB856D7A549213EC">
-      <ColNames>property_id</ColNames>
-      <RefSchemaName>myagency</RefSchemaName>
-      <RefTableName>property</RefTableName>
-      <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <column id="247" parent="232" name="id">
+    <column id="240" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="232" name="title">
+    <column id="241" parent="231" name="title">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="description">
+    <column id="242" parent="231" name="description">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="232" name="surface">
+    <column id="243" parent="231" name="surface">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="rooms">
+    <column id="244" parent="231" name="rooms">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="232" name="bedrooms">
+    <column id="245" parent="231" name="bedrooms">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="232" name="floor">
+    <column id="246" parent="231" name="floor">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="232" name="price">
+    <column id="247" parent="231" name="price">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="232" name="heat">
+    <column id="248" parent="231" name="heat">
       <Position>9</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="232" name="city">
+    <column id="249" parent="231" name="city">
       <Position>10</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="232" name="address">
+    <column id="250" parent="231" name="address">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="232" name="postal_code">
+    <column id="251" parent="231" name="postal_code">
       <Position>12</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="232" name="sold">
+    <column id="252" parent="231" name="sold">
       <Position>13</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="232" name="created_at">
+    <column id="253" parent="231" name="created_at">
       <Position>14</Position>
       <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="261" parent="232" name="PRIMARY">
+    <key id="254" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="255" parent="232" name="property_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="232" name="option_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="257" parent="232" name="IDX_24F16FCC549213EC">
+      <ColNames>property_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="258" parent="232" name="IDX_24F16FCCA7C41D6F">
+      <ColNames>option_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="259" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>property_id
+option_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="260" parent="232" name="FK_24F16FCC549213EC">
+      <ColNames>property_id</ColNames>
+      <RefSchemaName>myagency</RefSchemaName>
+      <RefTableName>property</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="261" parent="232" name="FK_24F16FCCA7C41D6F">
+      <ColNames>option_id</ColNames>
+      <RefSchemaName>myagency</RefSchemaName>
+      <RefTableName>option</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
     <column id="262" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>

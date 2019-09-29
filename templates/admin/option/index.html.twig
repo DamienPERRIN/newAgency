@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title "Gérer les biens" %}
+{% block title "Gérer les options" %}
 {% block body %}
     <div class="container mt-4">
     <div class="container">
@@ -15,14 +15,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td>Titres</td>
+                    <td>Options</td>
                     <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
                 {% for option in options %}
                     <tr>
-                        <td>{{ option.title }}</td>
+                        <td>{{ option.name }}</td>
                         <td>
                             <a href="{{ path('admin.option.edit', {id: option.id}) }}" class="btn btn-secondary">Editer</a>
                             <form method="POST" action="{{ path('admin.option.delete', {id: option.id}) }}" style="display: inline-block" onsubmit="return confirm('Etes-vous vraiment sûr ?')">
@@ -36,7 +36,7 @@
             </tbody>
         </table>
         <div class="text-right">
-            <a href="{{ path('admin.option.create') }}" class="btn btn-info">Créer un nouveau bien</a>
+            <a href="{{ path('admin.option.new') }}" class="btn btn-info">Créer un nouveau bien</a>
         </div>
         </div>
     </div>

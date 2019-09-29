@@ -8,8 +8,8 @@ security:
 
     firewalls:
         dev:
-#            pattern: ^/(_(profiler|wdt)|css|images|js)/ TODO : why this uncomment line give me this message : The process has been signaled with signal "9"
-#                                                        TODO : but i don't need to login on admin
+            # pattern: ^/(_(profiler|wdt)|css|images|js)/ TODO : why this uncomment line give me this message : The process has been signaled with signal "9"
+                                                        # TODO : but i don't need to login on admin
             security: false
         main:
             anonymous: true

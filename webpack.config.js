@@ -48,9 +48,26 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills
-    .configureBabel(() => {}, {
-        useBuiltIns: 'usage',
-        corejs: 3
+    // .configureBabel(() => {}, {
+    //     useBuiltIns: 'usage',
+    //     corejs: 3
+    // })
+
+    .configureBabel(function(babelConfig) {
+        // add additional presets
+        babelConfig.presets.push('@babel/preset-flow');
+
+        // no plugins are added by default, but you can add some
+        babelConfig.plugins.push('styled-jsx/babel');
+    }, {
+        // node_modules is not processed through Babel by default
+        // but you can whitelist specific modules to process
+        include_node_modules: ['foundation-sites'],
+
+        // or completely control the exclude rule (note that you
+        // can't use both "include_node_modules" and "exclude" at
+        // the same time)
+        exclude: /bower_components/
     })
 
     // enables Sass/SCSS support
@@ -71,4 +88,8 @@ Encore
     //.addEntry('admin', './assets/js/admin.js')
 ;
 
-module.exports = Encore.getWebpackConfig();
+var config = Encore.getWebpackConfig();
+
+config.externals.jquery = 'jQuery';
+
+module.exports = config;
